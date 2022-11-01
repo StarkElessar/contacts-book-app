@@ -1,15 +1,50 @@
 // =====================================================================================================================
 .header {
   width: 100%;
+  box-shadow: $defaultShadow;
+  background-color: #fff;
   // .header__container
   &__container {
     height: rem($headerHeight);
     display: flex;
     align-items: center;
   }
+  // .header__logo
+  &__logo {
+    margin-right: auto;
+  }
+  // .header__menu
+  &__menu { }
 }
 // =====================================================================================================================
-
+// Logo
+.logo {
+  display: flex;
+  align-items: center;
+  @include media(768) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  // .logo__icon
+  &__icon {
+    margin-right: rem(16);
+    @include media(768) {
+      padding-left: rem(1);
+    }
+  }
+  // .logo__text
+  &__text {
+    font-weight: 700;
+    font-size: rem(18);
+    line-height: prc(22, 18);
+    color: #005bfe;
+    @include media(768) {
+      max-width: rem(80);
+      font-size: rem(14);
+      line-height: prc(22, 24);
+    }
+  }
+}
 // Burger
 /*
 .icon-menu {
