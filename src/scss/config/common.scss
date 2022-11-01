@@ -1,0 +1,106 @@
+// Menu
+.menu {
+  display: flex;
+  align-items: center;
+  column-gap: rem(16);
+  @include media(425) {
+    column-gap: rem(8);
+  }
+  // .menu__btn
+  &__btn {
+    @include media(425) {
+      &.button {
+        padding-left: rem(8);
+        padding-right: rem(8);
+
+        .button__text {
+          font-size: rem(12);
+        }
+      }
+    }
+  }
+}
+// Button
+.button {
+  display: flex;
+  align-items: center;
+  column-gap: rem(12);
+  border-radius: rem(6);
+  padding: rem(10) rem(16);
+  transition: $standartTrans;
+  // .button_add-contact
+  &_add-contact {
+    background-color: $redColor;
+    display: flex;
+    align-items: center;
+    @include media(425) {
+      .button__icon {
+        display: none;
+      }
+    }
+    &:hover {
+      background-color: $redHoverColor;
+    }
+  }
+  // .button_groups
+  &_groups {
+    background-color: $blueColor;
+    &:hover {
+      background-color: $blueHoverColor;
+    }
+  }
+  // .button_add
+  &_add {
+    background-color: transparent;
+    &:hover {
+      background-color: rgba($blueColor, 10%);
+    }
+    &:active {
+      background-color: rgba($blueColor, 20%);
+    }
+    .button__text {
+      color: $blueColor;
+    }
+  }
+  // .button_save
+  &_save {
+    background-color: $blueColor;
+    &:hover {
+      background-color: $blueHoverColor;
+    }
+    .button__text {
+      color: #fff;
+    }
+  }
+  // .button__text
+  &__text {
+    color: #fff;
+    font-weight: 700;
+    font-size: rem(14);
+  }
+  // .button__icon
+  &__icon {
+    display: flex;
+    align-items: center;
+  }
+}
+.description-label {
+  padding-top: calc((100vh - rem($headerHeight)) / 2);
+  &._hide {
+    display: none;
+  }
+  @include media(425) {
+    padding-top: rem(200);
+  }
+  // .description-label__container
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+  // .description-label__text
+  &__text {
+    font-size: rem(18);
+    line-height: prc(18, 18);
+    color: rgba(#000, 30%);
+  }
+}
