@@ -4,17 +4,22 @@ $maxWidthContainer: 1200; // ширина контейнера с учетом p
 $containerWidth: 1160; // ширина контейнера из макета
 
 $mainOffset: 15; // отступы безопасности для контейнера
-$mainFont: ''; // указать здесь основное семейство шрифта
+$mainFont: "Arial"; // указать здесь основное семейство шрифта
 
-$headerHeight: 100;
+$headerHeight: 70;
 $footerHeight: 100;
 
 $whiteColor: #fff;
-$blackColor: #131313;
+$blackColor: #000;
 $grayColor: #6f6f6f;
-$redColor: #ff4040;
+$backgroundColor: #f6f7f9;
+$orangeColor: #ea3d2f;
+$redColor: #f81155;
+$redHoverColor: #d1003e;
+$blueColor: #005bfe;
+$blueHoverColor: #0047c6;
 
-$firstAccentColor: $blackColor;
+$firstAccentColor: $blueColor;
 $secondAccentColor: $redColor;
 
 $mainFontFamily: $mainFont, sans-serif;
@@ -23,13 +28,9 @@ $fontSize: rem(16);
 $mainRadius: rem(10);
 
 $standartTrans: all 280ms ease-in-out 0ms;
-$btnBoxShadow:  0px 2px 3px rgba(#000, 10%), 
-                0px 8px 3px rgba(#000, 10%);
+$defaultShadow: 0px rem(4) rem(20) rgba(#000, 5%);;
+$btnBoxShadow: 0px 2px 3px rgba(#000, 10%), 0px 8px 3px rgba(#000, 10%);
 
-$lightBoxShadow:  0 0 2px 0 rgba(#000, 10%), 
-                  0 0 4px 0 rgba(#000, 10%), 
-                  0 0 8px 0 rgba(#000, 10%);
+$lightBoxShadow: 0 0 2px 0 rgba(#000, 10%), 0 0 4px 0 rgba(#000, 10%), 0 0 8px 0 rgba(#000, 10%);
 
-$hoverBoxShadow:  0 0 5px 0 rgba(#000, 10%), 
-                  0 0 10px 0 rgba(#000, 10%), 
-                  0 0 15px 0 rgba(#000, 10%);
+$hoverBoxShadow: 0 0 5px 0 rgba(#000, 10%), 0 0 10px 0 rgba(#000, 10%), 0 0 15px 0 rgba(#000, 10%);
