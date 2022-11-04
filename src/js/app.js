@@ -19,7 +19,7 @@ const app = () => {
   }
 
   toggleModal()
-  renderContactsGroup()
+  renderContactsGroup(contactsGroupList)
   contactGroupsAccordion()
   dropdownGroup()
 }

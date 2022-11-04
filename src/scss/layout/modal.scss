@@ -29,6 +29,10 @@
     flex-direction: column;
     padding-bottom: rem(24);
     box-shadow: rem(4) 0 rem(20) rgba(#000, 10%);
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   // .modal__header
   &__header {
