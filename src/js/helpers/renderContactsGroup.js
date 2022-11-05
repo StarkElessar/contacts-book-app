@@ -1,21 +1,30 @@
-import { liAddNewGroupItemNode } from './getHTMLTemplate'
+import { liHTMLTemplate } from './getHTMLTemplate'
+import { createContactGroupElement } from './createContactGroupElement'
 
 export const renderContactsGroup = (contactsGroupList) => {
-  const container = document.querySelector('.contacts-group__container')
   const groupListContainer = document.querySelector('.contacts-group__list')
   const addNewGroupButton = document.querySelector('.button_add')
   const saveGroupsButton = document.querySelector('.button_save')
 
-  const liHTML = `
-    <input class="contacts-group__input" type="text" name="contacts-group" placeholder="Введите название">
-    <button class="contacts-group__button-remove" type="button">
-      <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M1.66664 17.3889C1.66664 18.55 2.61664 19.5 3.77775 19.5H12.2222C13.3833 19.5 14.3333 18.55 14.3333 17.3889V4.72222H1.66664V17.3889ZM4.26331 9.87333L5.75164 8.385L7.99997 10.6228L10.2378 8.385L11.7261 9.87333L9.48831 12.1111L11.7261 14.3489L10.2378 15.8372L7.99997 13.5994L5.7622 15.8372L4.27386 14.3489L6.51164 12.1111L4.26331 9.87333ZM11.6944 1.55556L10.6389 0.5H5.36108L4.30553 1.55556H0.611084V3.66667H15.3889V1.55556H11.6944Z"
-          fill="white" />
-      </svg>
-    </button>
-  `
+  const observerCallback = ([{ target, attributeName, addedNodes: [addedNode], removedNodes: [removedNode] }]) => {
+    if (attributeName) {
+      addNewGroupButton.disabled = !target.value
+      addNewGroupButton.classList.toggle('_disabled', !target.value)
+    }
+
+    if (addedNode) {
+      addNewGroupButton.disabled = true
+      addNewGroupButton.classList.add('_disabled')
+    }
+
+    if (removedNode && !removedNode.querySelector('input').value) {
+      addNewGroupButton.disabled = false
+      addNewGroupButton.classList.remove('_disabled')
+    }
+  }
+
+  const observer = new MutationObserver(observerCallback)
+  observer.observe(groupListContainer, { childList: true, subtree: true, attributes: true })
 
   if (localStorage.getItem('groupList')) {
     groupListContainer.classList.remove('_hide')
@@ -23,18 +32,13 @@ export const renderContactsGroup = (contactsGroupList) => {
     contactsGroupList.forEach((groupItem) => {
       groupListContainer.insertAdjacentHTML(
         'beforeend',
-        liAddNewGroupItemNode(groupItem)
+        liHTMLTemplate(groupItem)
       )
     })
-  } else {
-    groupListContainer.classList.add('_hide')
   }
 
-  groupListContainer.addEventListener('click', (event) => {
-    const target = event.target
+  groupListContainer.onclick = ({ target }) => {
     const buttonRemoveGroup = target.closest('.contacts-group__button-remove')
-    const allButtonRemove = groupListContainer.querySelectorAll('button')
-    const lastButton = allButtonRemove[allButtonRemove.length - 1]
 
     if (buttonRemoveGroup) {
       const removedGroupValue = buttonRemoveGroup.previousElementSibling.value
@@ -59,43 +63,14 @@ export const renderContactsGroup = (contactsGroupList) => {
         addNewGroupButton.disabled = false
       }
     }
-    if (target === lastButton) {
-      addNewGroupButton.classList.remove('_disabled')
-      addNewGroupButton.disabled = false
-    }
-  })
+  }
 
-  addNewGroupButton.addEventListener('click', () => {
-    const liNode = document.createElement('li')
+  addNewGroupButton.onclick = () => {
+    const contactGroupElement = createContactGroupElement()
+    groupListContainer.append(contactGroupElement)
+  }
 
-    liNode.classList.add('contacts-group__item')
-    liNode.innerHTML = liHTML
-    groupListContainer.append(liNode)
-
-    if (groupListContainer.classList.contains('_hide')) {
-      groupListContainer.classList.remove('_hide')
-    }
-
-    const lastItemGroup = groupListContainer.lastChild
-    const lastInput = lastItemGroup.querySelector('input')
-
-    if (!lastInput.value) {
-      addNewGroupButton.classList.add('_disabled')
-      addNewGroupButton.disabled = true
-    } else {
-      addNewGroupButton.classList.remove('_disabled')
-      addNewGroupButton.disabled = false
-    }
-
-    liNode.oninput = (event) => {
-      if (event.target.value.length > 0) {
-        addNewGroupButton.classList.remove('_disabled')
-        addNewGroupButton.disabled = false
-      }
-    }
-  })
-
-  saveGroupsButton.addEventListener('click', () => {
+  saveGroupsButton.onclick = () => {
     const itemsGroup = groupListContainer.querySelectorAll('[name="contacts-group"]')
     const lastInput = groupListContainer.hasChildNodes()
       ? itemsGroup[itemsGroup.length - 1]
@@ -123,5 +98,5 @@ export const renderContactsGroup = (contactsGroupList) => {
     } else if(lastInput && !lastInput.value) {
       alert('У вас есть не заполненные поля или удалите их или заполните!')
     }
-  })
+  }
 }
