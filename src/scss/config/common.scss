@@ -28,6 +28,13 @@
   border-radius: rem(6);
   padding: rem(10) rem(16);
   transition: $standartTrans;
+  &._disabled {
+    cursor: not-allowed;
+
+    .button__text { color: $grayColor; }
+    &:hover { background-color: rgba($grayColor, 10%); }
+    &:active { background-color: rgba($grayColor, 20%); }
+  }
   // .button_add-contact
   &_add-contact {
     background-color: $redColor;
