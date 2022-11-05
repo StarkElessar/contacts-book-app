@@ -1,13 +1,10 @@
-import { liHTMLTemplate } from './getHTMLTemplate'
+import { liAddNewGroupItemNode } from './getHTMLTemplate'
 
 export const renderContactsGroup = (contactsGroupList) => {
   const container = document.querySelector('.contacts-group__container')
   const groupListContainer = document.querySelector('.contacts-group__list')
   const addNewGroupButton = document.querySelector('.button_add')
   const saveGroupsButton = document.querySelector('.button_save')
-  const addNewGroupInputs = groupListContainer.querySelectorAll(
-    '[name="contacts-group"]'
-  )
 
   const liHTML = `
     <input class="contacts-group__input" type="text" name="contacts-group" placeholder="Введите название">
@@ -26,7 +23,7 @@ export const renderContactsGroup = (contactsGroupList) => {
     contactsGroupList.forEach((groupItem) => {
       groupListContainer.insertAdjacentHTML(
         'beforeend',
-        liHTMLTemplate(groupItem)
+        liAddNewGroupItemNode(groupItem)
       )
     })
   } else {
@@ -91,7 +88,6 @@ export const renderContactsGroup = (contactsGroupList) => {
     }
 
     liNode.oninput = (event) => {
-      console.log(event.target.value.length > 0)
       if (event.target.value.length > 0) {
         addNewGroupButton.classList.remove('_disabled')
         addNewGroupButton.disabled = false
@@ -100,14 +96,11 @@ export const renderContactsGroup = (contactsGroupList) => {
   })
 
   saveGroupsButton.addEventListener('click', () => {
-    const itemsGroup = groupListContainer.querySelectorAll(
-      '[name="contacts-group"]'
-    )
+    const itemsGroup = groupListContainer.querySelectorAll('[name="contacts-group"]')
     const lastInput = groupListContainer.hasChildNodes()
       ? itemsGroup[itemsGroup.length - 1]
       : null
-    const groupsList =
-      JSON.parse(localStorage.getItem('groupList')) || new Array()
+    const groupsList = JSON.parse(localStorage.getItem('groupList')) || new Array()
 
     if (lastInput === null) {
       console.warn('Нечего сохранять, добавьте поле для новой группы!')
@@ -125,6 +118,10 @@ export const renderContactsGroup = (contactsGroupList) => {
       localStorage.setItem('groupList', JSON.stringify(groupsList))
       addNewGroupButton.classList.remove('_disabled')
       addNewGroupButton.disabled = false
+
+      alert('Группы успешно сохранены!')
+    } else if(lastInput && !lastInput.value) {
+      alert('У вас есть не заполненные поля или удалите их или заполните!')
     }
   })
 }
