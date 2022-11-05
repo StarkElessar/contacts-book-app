@@ -5,6 +5,8 @@ export const dropdownGroup = () => {
   const dropdownList = document.getElementById('dropdown-list')
   const dropdownInput = document.getElementById('dropdown-input')
 
+  dropdownButtonLabel.innerText = dropdownInput.value || 'Выберите группу'
+
   dropdownWrapper.addEventListener('click', (event) => {
     const target = event.target
 
