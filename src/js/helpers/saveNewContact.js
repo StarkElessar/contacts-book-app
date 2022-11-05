@@ -1,20 +1,22 @@
 import { isEmpty } from './isEmpty'
+import { renderContactsBook } from './renderContactsBook'
 
 export const saveNewContact = () => {
   const container = document.querySelector('.new-contact__container')
   const inputs = Array.from(container.querySelectorAll('input'))
-  const contacts = JSON.parse(localStorage.getItem('contactsBook')) || new Object()
+  const contacts =
+    JSON.parse(localStorage.getItem('contactsBook')) || new Object()
   const contactObj = {}
 
-  inputs.forEach((input) => contactObj[input.name] = input.value)
+  inputs.forEach((input) => (contactObj[input.name] = input.value))
 
   if (inputs.some(isEmpty)) {
-    alert("Нельзя сохранить пустые поля!")
+    alert('Нельзя сохранить пустые поля!')
     return
   }
 
   const key = inputs[2].value
-  
+
   if (contacts[key]) {
     contacts[key].push(contactObj)
   } else {
@@ -29,4 +31,6 @@ export const saveNewContact = () => {
       input.value = ''
     }
   })
+
+  renderContactsBook()
 }
