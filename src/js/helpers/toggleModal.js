@@ -1,4 +1,4 @@
-import { liAddNewGroupItemNode, liDropdownItemNode } from './getHTMLTemplate'
+import { liHTMLTemplate, liDropdownItemNode } from './getHTMLTemplate'
 import { renderContactsBook } from './renderContactsBook'
 import { saveNewContact } from './saveNewContact'
 
@@ -28,7 +28,7 @@ export const toggleModal = () => {
             groups.forEach((group) => {
               placeListNode.insertAdjacentHTML(
                 'beforeend',
-                liAddNewGroupItemNode(group)
+                liHTMLTemplate(group)
               )
             })
           }
@@ -69,7 +69,6 @@ export const toggleModal = () => {
       modalWrapper.classList.remove('_show')
       buttonAddNewGroup.classList.remove('_disabled')
       buttonAddNewGroup.disabled = false
-      renderContactsBook()
 
       if (event.target.closest('[data-add-contact]')) {
         document.querySelectorAll('.new-contact__input')
