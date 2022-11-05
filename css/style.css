@@ -192,6 +192,22 @@ body .lock {
   transition: all 280ms ease-in-out 0ms;
 }
 
+.button._disabled {
+  cursor: not-allowed;
+}
+
+.button._disabled .button__text {
+  color: #6f6f6f;
+}
+
+.button._disabled:hover {
+  background-color: rgba(111, 111, 111, 0.1);
+}
+
+.button._disabled:active {
+  background-color: rgba(111, 111, 111, 0.2);
+}
+
 .button_add-contact {
   background-color: #f81155;
   display: -webkit-box;
