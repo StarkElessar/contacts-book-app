@@ -6,8 +6,8 @@ export const renderContactsGroup = (contactsGroupList) => {
   const addNewGroupButton = document.querySelector('.button_add')
   const saveGroupsButton = document.querySelector('.button_save')
 
-  const observerCallback = ([{ target, attributeName, addedNodes: [addedNode], removedNodes: [removedNode] }]) => {
-    if (attributeName) {
+  const observerCallback = ([{ target, attributeName, addedNodes: [addedNode], removedNodes: [removedNode]}]) => {
+    if (attributeName === 'value') {
       addNewGroupButton.disabled = !target.value
       addNewGroupButton.classList.toggle('_disabled', !target.value)
     }
