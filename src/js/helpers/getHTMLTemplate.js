@@ -1,4 +1,4 @@
-export const liAddNewGroupItemNode = (itemValue) => `
+export const liHTMLTemplate = (itemValue) => `
   <li class="contacts-group__item">
     <input 
         class="contacts-group__input" 
