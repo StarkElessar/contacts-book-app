@@ -528,6 +528,11 @@ body .lock {
   padding: 0.375rem 0.5rem;
 }
 
+.contact-list__item._edit .contact-list__name._error,
+.contact-list__item._edit .contact-list__phone._error {
+  border: 0.0625rem solid #f81155;
+}
+
 .contact-list__item._edit .contact-list__button_edit {
   background-color: #4adb1b;
   border-color: #4adb1b;
