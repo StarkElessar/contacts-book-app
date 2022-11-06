@@ -4,11 +4,10 @@ import { renderContactsBook } from './renderContactsBook'
 export const saveNewContact = () => {
   const container = document.querySelector('.new-contact__container')
   const inputs = Array.from(container.querySelectorAll('input'))
-  inputs[0].value = Date.parse(new Date())
-  const contacts =
-    JSON.parse(localStorage.getItem('contactsBook')) || new Object()
+  const contacts = JSON.parse(localStorage.getItem('contactsBook')) || new Object()
   const contactObj = {}
-
+  
+  inputs[0].value = Date.parse(new Date())
   inputs.forEach((input) => (contactObj[input.name] = input.value))
 
   if (inputs.some(inputIsEmpty)) {
