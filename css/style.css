@@ -1181,6 +1181,7 @@ body .lock {
 
   .logo__icon {
     padding-left: 0.0625rem;
+    margin-right: 0;
   }
 
   .logo__text {
