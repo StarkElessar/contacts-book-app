@@ -103,7 +103,7 @@
       padding: rem(8) 0;
       grid-template-columns: 1fr auto;
       grid-template-rows: auto auto;
-      row-gap: rem(12);
+      @include adaptiveClamp('row-gap', 12, 6, 680, 320, 1);
       column-gap: rem(8);
     }
     &._edit {
@@ -112,6 +112,9 @@
         background-color: rgba(#000, 3%);
         color: $blueColor;
         padding: rem(6) rem(8);
+        &._error {
+          border: rem(1) solid $redColor;
+        }
       }
       .contact-list__button_edit {
         background-color: #4adb1b;
@@ -140,7 +143,6 @@
     background-color: transparent;
     font-size: rem(18);
     border-radius: rem(6);
-    // padding: rem(6) rem(8);
     transition: $standartTrans;
     @include media(680) {
       grid-column-start: 1;
@@ -160,7 +162,6 @@
     font-size: rem(18);
     background-color: transparent;
     border-radius: rem(6);
-    // padding: rem(6) rem(8);
     transition: $standartTrans;
     @include media(680) {
       grid-column-start: 1;
