@@ -46,10 +46,10 @@ export const contactLiNode = ({userName, userPhone, userGroup, userId}) => `
         placeholder="Фамилия Имя Отчество"
         value="${userName}"
         disabled>
-    <input type="text" 
+    <input type="tel" 
         class="contact-list__phone"
         name="userPhone" 
-        placeholder="+7 (XXX) XXX - XX - XX" 
+        placeholder="+7 (XXX) XXX-XX-XX" 
         value="${userPhone}" 
         size="16"
         disabled>
