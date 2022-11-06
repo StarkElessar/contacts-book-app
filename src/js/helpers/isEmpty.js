@@ -1,1 +1,1 @@
-export const isEmpty = (input) => input.value === ''
+export const inputIsEmpty = (input) => input.value === ''
