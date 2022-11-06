@@ -457,7 +457,7 @@ body .lock {
 .contact-list__label {
   margin-right: auto;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 122.2222222222%;
   color: #000;
   -webkit-transition: all 280ms ease-in-out 0ms;
@@ -526,19 +526,59 @@ body .lock {
           align-items: center;
 }
 
+.contact-list__item._edit .contact-list__name,
+.contact-list__item._edit .contact-list__phone {
+  background-color: rgba(0, 0, 0, 0.03);
+  color: #005bfe;
+  padding: 0.375rem 0.5rem;
+}
+
+.contact-list__item._edit .contact-list__button_edit {
+  background-color: #4adb1b;
+  border-color: #4adb1b;
+}
+
+.contact-list__item._edit .contact-list__button_edit:hover {
+  background-color: #42c418;
+  border-color: #42c418;
+}
+
+.contact-list__item._edit .contact-list__button_edit:active {
+  background-color: #3bae15;
+  border-color: darnek(#4adb1b, 10%);
+}
+
+.contact-list__item._edit .contact-list__button_edit svg path {
+  fill: #fff;
+}
+
 .contact-list__name {
-  margin-right: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  margin-right: 0.5rem;
   color: rgba(0, 0, 0, 0.5);
   background-color: transparent;
   font-size: 1.125rem;
+  border-radius: 0.375rem;
+  -webkit-transition: all 280ms ease-in-out 0ms;
+  -o-transition: all 280ms ease-in-out 0ms;
+  transition: all 280ms ease-in-out 0ms;
 }
 
 .contact-list__phone {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 11.875rem;
+          flex: 0 1 11.875rem;
+  width: 11.875rem;
   margin-right: 1.5rem;
   color: #000;
   font-size: 1.125rem;
   background-color: transparent;
-  width: auto;
+  border-radius: 0.375rem;
+  -webkit-transition: all 280ms ease-in-out 0ms;
+  -o-transition: all 280ms ease-in-out 0ms;
+  transition: all 280ms ease-in-out 0ms;
 }
 
 .contact-list__button {
@@ -546,7 +586,6 @@ body .lock {
   height: 2.375rem;
   border-radius: 0.375rem;
   border: 0.0625rem solid rgba(0, 0, 0, 0.1);
-  margin-right: 0.5rem;
   background-color: transparent;
   -webkit-transition: all 280ms ease-in-out 0ms;
   -o-transition: all 280ms ease-in-out 0ms;
@@ -560,6 +599,10 @@ body .lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.contact-list__button:not(:last-child) {
+  margin-right: 0.5rem;
 }
 
 .contact-list__button svg path {
@@ -1113,6 +1156,64 @@ body .lock {
   }
 }
 
+@media (max-width: 680.98px) {
+  .contact-list__item {
+    display: -ms-grid;
+    display: grid;
+    padding: 0.5rem 0;
+    -ms-grid-columns: 1fr auto;
+    grid-template-columns: 1fr auto;
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+    row-gap: 0.75rem;
+    -webkit-column-gap: 0.5rem;
+       -moz-column-gap: 0.5rem;
+            column-gap: 0.5rem;
+  }
+
+  .contact-list__name {
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    -ms-grid-column-span: 1;
+    grid-column-end: 2;
+    margin-right: 0;
+  }
+
+  .contact-list__phone {
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    -ms-grid-column-span: 1;
+    grid-column-end: 2;
+    margin-right: 0;
+  }
+
+  .contact-list__button:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .contact-list__button_edit {
+    -ms-grid-column: 2;
+        grid-column-start: 2;
+    -ms-grid-column-span: 1;
+    grid-column-end: 3;
+    -ms-grid-row: 1;
+        grid-row-start: 1;
+    -ms-grid-row-span: 1;
+    grid-row-end: 2;
+  }
+
+  .contact-list__button_remove {
+    -ms-grid-column: 2;
+        grid-column-start: 2;
+    -ms-grid-column-span: 1;
+    grid-column-end: 3;
+    -ms-grid-row: 2;
+        grid-row-start: 2;
+    -ms-grid-row-span: 1;
+    grid-row-end: 3;
+  }
+}
+
 @media (max-width: 425.98px) {
   .menu {
     -webkit-column-gap: 0.5rem;
@@ -1135,5 +1236,30 @@ body .lock {
 
   .description-label {
     padding-top: 12.5rem;
+  }
+
+  .contact-list__header {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .contact-list__label {
+    font-size: 1rem;
+  }
+
+  .contact-list__content {
+    padding: 0 0.5rem;
+  }
+
+  .contact-list__name {
+    font-size: 0.875rem;
+  }
+
+  .contact-list__phone {
+    font-size: 0.875rem;
+  }
+
+  .contact-list__button {
+    width: 1.875rem;
+    height: 1.875rem;
   }
 }
