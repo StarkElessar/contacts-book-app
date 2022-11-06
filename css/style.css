@@ -313,11 +313,15 @@ body .lock {
 
 .header._sticky {
   position: fixed;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .header._sticky .header__container {
   height: 3.125rem;
+}
+
+.header._sticky .logo__text {
+  display: none;
 }
 
 .header__container {
