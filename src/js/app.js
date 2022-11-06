@@ -1,8 +1,10 @@
+import maskedInput from './modules/maskedInput'
 import { dropdownGroup } from './helpers/dropdownGroup'
 import { editingContacts } from './helpers/editingContacts'
 import { renderContactsBook } from './helpers/renderContactsBook'
 import { renderContactsGroup } from './helpers/renderContactsGroup'
 import { toggleModal } from './helpers/toggleModal'
+import { headerFixed } from './modules/headerFixed'
 
 const app = () => {
   const descriptionLabel = document.querySelector('.description-label')
@@ -27,4 +29,6 @@ const app = () => {
   editingContacts()
 }
 
+headerFixed()
 app()
+maskedInput()
