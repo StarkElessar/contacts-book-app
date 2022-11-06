@@ -78,6 +78,7 @@ export const toggleModal = () => {
 
     if (event.target && event.target.closest('#save-contact')) {
       saveNewContact()
+      renderContactsBook()
     }
   })
 }
