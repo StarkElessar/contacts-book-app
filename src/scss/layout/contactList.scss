@@ -89,6 +89,30 @@
     padding: rem(24) 0;
     display: flex;
     align-items: center;
+    &._edit {
+      .contact-list__name,
+      .contact-list__phone {
+        background-color: rgba(#000, 3%);
+        color: $blueColor;
+      }
+      .contact-list__button_edit {
+        background-color: #4adb1b;
+        border-color: #4adb1b;
+        &:hover {
+          background-color: darken(#4adb1b, 5%);
+          border-color: darken(#4adb1b, 5%);
+        }
+        &:active {
+          background-color: darken(#4adb1b, 10%);
+          border-color: darnek(#4adb1b, 10%);
+        }
+        svg {
+          path {
+            fill: #fff;
+          }
+        }
+      }
+    }
   }
   // .contact-list__name
   &__name {
@@ -96,6 +120,9 @@
     color: rgba(#000, 50%);
     background-color: transparent;
     font-size: rem(18);
+    border-radius: rem(6);
+    padding: rem(6) rem(12);
+    transition: $standartTrans;
   }
   // .contact-list__phone
   &__phone {
@@ -104,6 +131,9 @@
     font-size: rem(18);
     background-color: transparent;
     width: auto;
+    border-radius: rem(6);
+    padding: rem(6) rem(12);
+    transition: $standartTrans;
   }
   // .contact-list__button
   &__button {
