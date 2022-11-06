@@ -297,10 +297,27 @@ body .lock {
 }
 
 .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
   width: 100%;
   -webkit-box-shadow: 0px 0.25rem 1.25rem rgba(0, 0, 0, 0.05);
           box-shadow: 0px 0.25rem 1.25rem rgba(0, 0, 0, 0.05);
   background-color: #fff;
+  -webkit-transition: all 280ms ease-in-out 0ms;
+  -o-transition: all 280ms ease-in-out 0ms;
+  transition: all 280ms ease-in-out 0ms;
+}
+
+.header._sticky {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.header._sticky .header__container {
+  height: 3.125rem;
 }
 
 .header__container {
@@ -311,6 +328,9 @@ body .lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: all 280ms ease-in-out 0ms;
+  -o-transition: all 280ms ease-in-out 0ms;
+  transition: all 280ms ease-in-out 0ms;
 }
 
 .header__logo {
