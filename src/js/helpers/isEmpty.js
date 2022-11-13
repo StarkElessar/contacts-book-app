@@ -1,1 +1,0 @@
-export const inputIsEmpty = (input) => input.value === ''
