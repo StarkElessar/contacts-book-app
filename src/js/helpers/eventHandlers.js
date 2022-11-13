@@ -15,6 +15,10 @@ import {
 // событие при клике на кнопку добавить контакт:
 // сбрасываются все инпуты и открывается сайдбар
 const handleHeaderAddContactButtonClick = () => {
+  if (!localStorage.getItem('contactsBook')) {
+    alert('Сначала добавьте группы')
+    return
+  }
   contactInputsContainer.dataset.id = ''
   contactSidebarInputs.forEach((input) => input.value = '')
   contactSidebarDropdownLabel.innerText = 'Выберите группу'
