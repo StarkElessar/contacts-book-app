@@ -4,10 +4,12 @@ import {
   contactSidebar,
   contactInputsContainer,
   contactSidebarInputs,
+  dropdownButton,
   contactSidebarDropdownLabel,
+  dropdownListContainer,
   dropdownInput,
   groupsSidebar,
-  groupsSidebarGroupsContainer
+  groupsSidebarGroupsContainer,
 } from './elements'
 
 // событие при клике на кнопку добавить контакт:
@@ -70,3 +72,48 @@ const handleSaveContactButtonClick = (store) => () => {
   localStorage.setItem('contactsBook', (JSON.stringify(store.contactsBook)))
   contactSidebar.classList.remove('_show')
 }
+
+// создание нового инпута для создания группы
+const handleAddNewGroupButtonClick = () => {
+  const contactGroupElement = createSidebarGroupElement()
+  groupsSidebarGroupsContainer.append(contactGroupElement)
+}
+
+// Сохранение названия групп для контактов при нажатии на кнопку сохранить
+const handleSaveGroupsButton = (store) => () => {
+  const inputs = [...groupsSidebarGroupsContainer.querySelectorAll('input')]
+  const inputValues = inputs.map((input) => input.value)
+  
+  // запрещаем сохранять пустые поля
+  if (inputValues.some((value) => !value)) {
+    alert('Заполните поле')
+    return
+  }
+  // массив групп созданный из значений дата-атрибутов каждого инпута
+  const groupsToSave = inputs.map(({ dataset: { id, name, isOpened } }) => ({ id: Number(id), name, isOpened }))
+  // массив id-групп
+  const groupIdsToSave = groupsToSave.map((group) => group.id)
+  // массив групп с экшенами, чтобы вызвать нужные методы и после перерисовать все группы контактов
+  const groupsWithActionType = [
+    {
+      type: 'removeGroup',
+      groups: store.groups.filter((group) => !groupIdsToSave.includes(group.id))
+    },
+    {
+      type: 'updateGroup',
+      groups: groupsToSave.filter((group) => store.groupIds.includes(group.id)),
+    },
+    {
+      type: 'createGroup',
+      groups: groupsToSave.filter((group) => !group.id)
+    }
+  ]
+  // перебираем массив экшенов и диспатчим их
+  groupsWithActionType.forEach(({ type, groups }) => (
+    groups.forEach((group) => store.dispatch({ type, groupProps: group })))
+  )
+  // вконце сохраняем в localStorage актуальную версию списка контактов
+  localStorage.setItem('contactsBook', (JSON.stringify(store.contactsBook)))
+  groupsSidebar.classList.remove('_show')
+}
+
