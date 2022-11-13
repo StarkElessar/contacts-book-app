@@ -6,3 +6,14 @@ const setAttributes = (element, attributes) =>
 
 // Объеденяем все свойства элемента в один объект
 const setProps = (element, props) => Object.assign(element, props)
+
+// Базовое создание элемента, куда можно передать его тип, атрибуты, детей и остальные свойства
+const createElement = ({ type, attributes, children = [], ...props }) => {
+  const element = document.createElement(type)
+
+  setAttributes(element, attributes)
+  setProps(element, props)
+  element.append(...children)
+
+  return element
+}
