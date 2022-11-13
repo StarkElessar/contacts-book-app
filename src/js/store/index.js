@@ -22,7 +22,15 @@ const createStore = () => {
   // вызов диспатча для начальной отрисовки элементов
   dispatch({})
 
-  return {}
+  return {
+    get contactsBook() { return state },
+    get contacts() { return state.contacts },
+    get groups() { return state.groups },
+    get groupIds() { return state.groups.map((group) => group.id) },
+    getContactsByGroupId,
+    dispatch,
+    subscribe,
+  }
 }
 
 export { createStore }
