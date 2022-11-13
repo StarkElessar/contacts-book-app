@@ -163,7 +163,7 @@ const createContactGroupElement = ({ group, contacts, dispatch }) => {
   // wrapper обертка для аккордеона с хедером и контентной частью
   const groupElement = createElement({
     type: 'div',
-    attributes: { class: 'contact-list__group' },
+    attributes: { class: `contact-list__group ${group.isOpened ? '_show' : ''}` },
     children: [groupHeaderElement, groupContentElement]
   })
   // в массив помещаю группу контактов
