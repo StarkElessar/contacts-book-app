@@ -156,7 +156,7 @@ const createContactGroupElement = ({ group, contacts, dispatch }) => {
     type: 'div',
     attributes: {
       class: 'contact-list__content',
-      style: `height: ${group.isOpened ? contactContainerHeight * contacts.length : 0}px`,
+      style: `height: ${group.isOpened ? 'max-content' : 0}px`,
     },
     innerHTML: '<ul class="contact-list__list"></ul>'
   })
