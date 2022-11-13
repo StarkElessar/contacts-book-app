@@ -120,3 +120,52 @@ const createContactElement = (contact, dispatch) => {
 
   return contactElement
 }
+// Функция для создания группы контактов в аккордеоне:
+const createContactGroupElement = ({ group, contacts, dispatch }) => { 
+  // Заголовок аккордеона (группы контактов)
+  const groupHeaderElement = createElement({
+    type: 'div',
+    attributes: { class: `contact-list__header ${group.isOpened ? '_show' : ''}`,  },
+    innerHTML: `
+      <span class="contact-list__label">${group.name}</span>
+      <span class="contact-list__icon">
+        <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.8849 0.294983L6.29492 4.87498L1.70492 0.294983L0.294922 1.70498L6.29492 7.70498L12.2949 1.70498L10.8849 0.294983Z" fill="black"/>
+        </svg>
+      </span>
+    `,
+    // Вешаем обработчик клика на шапку аккордеона и диспатчим событие обновления группы, чтобы отрисовать контакты
+    // другими словами, чтобы раскрыть аккордеон
+    onclick: () => (
+      dispatch({
+        type: 'updateGroup',
+        groupProps: { id: group.id, isOpened: !group.isOpened }
+      })
+    )
+  })
+
+  const contactContainerHeight = 87 // Высота одной строки контакта
+  // создание контентной части аккордеона в котором будут располагаться все номера 
+  const groupContentElement = createElement({
+    type: 'div',
+    attributes: {
+      class: 'contact-list__content',
+      style: `height: ${group.isOpened ? contactContainerHeight * contacts.length : 0}px`,
+    },
+    innerHTML: '<ul class="contact-list__list"></ul>'
+  })
+  // wrapper обертка для аккордеона с хедером и контентной частью
+  const groupElement = createElement({
+    type: 'div',
+    attributes: { class: 'contact-list__group' },
+    children: [groupHeaderElement, groupContentElement]
+  })
+  // в массив помещаю группу контактов
+  const contactElements = (
+    contacts.map((contact) => createContactElement({ ...contact, groupName: group.name }, dispatch))
+  )
+  // в список контактов помещаются всем контакты
+  groupElement.querySelector('.contact-list__list').append(...contactElements)
+  
+  return groupElement
+}
