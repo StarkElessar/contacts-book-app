@@ -117,3 +117,12 @@ const handleSaveGroupsButton = (store) => () => {
   groupsSidebar.classList.remove('_show')
 }
 
+export {
+  handleHeaderAddContactButtonClick,
+  handleHeaderGroupsButtonClick,
+  handleCloseSidebar,
+  handleDropdownClick,
+  handleSaveContactButtonClick,
+  handleAddNewGroupButtonClick,
+  handleSaveGroupsButton,
+}
