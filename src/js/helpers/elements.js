@@ -9,11 +9,11 @@ const dropdownButton                        = document.getElementById('button-dr
 const contactSidebarDropdownLabel           = contactSidebar.querySelector('.custom-dropdown__label')
 const dropdownListContainer                 = document.getElementById('dropdown-list')
 const dropdownInput                         = document.getElementById('dropdown-input')
-const saveContactButton                     = document.getElementById('save-contact')
+const saveContactButton                     = document.getElementById('saveContact')
 const groupsSidebar                         = document.getElementById('addGroupSidebar')
 const groupsSidebarGroupsContainer          = document.querySelector('.contacts-group__list')
 const addNewGroupButton                     = document.querySelector('.button_add')
-const saveGroupsButton                      = document.querySelector('.button_save')
+const saveGroupsButton                      = document.getElementById('saveGroup')
 const emptyContactsContainer                = document.querySelector('.description-label')
 
 export {
