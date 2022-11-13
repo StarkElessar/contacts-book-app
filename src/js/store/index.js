@@ -24,3 +24,5 @@ const createStore = () => {
 
   return {}
 }
+
+export { createStore }
