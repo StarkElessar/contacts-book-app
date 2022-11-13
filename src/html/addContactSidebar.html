@@ -15,10 +15,10 @@
     <div class="modal__content new-contact">
       <div class="new-contact__container" data-id="">
         <div class="new-contact__field">
-          <input class="new-contact__input" name="userName" type="text" placeholder="Введите ФИО">
+          <input class="new-contact__input" name="name" type="text" placeholder="Введите ФИО">
         </div>
         <div class="new-contact__field">
-          <input class="new-contact__input" name="userPhone" type="tel" placeholder="Введите номер">
+          <input class="new-contact__input" name="phoneNumber" type="tel" placeholder="Введите номер">
         </div>
         <div class="new-contact__group custom-dropdown">
           <button class="custom-dropdown__btn" type="button" id="button-dropdown">
@@ -30,15 +30,13 @@
             </span>
           </button>
           <ul class="custom-dropdown__list  select-list" id="dropdown-list"></ul>
-          <input type="hidden" name="userGroup" value="" id="dropdown-input">
+          <input type="hidden" name="groupName" value="" id="dropdown-input">
         </div>
       </div>
     </div>
     <div class="modal__bottom bottom-modal">
       <div class="bottom-modal__container">
-        <button class="button bottom-modal__button button_save" 
-            id="save-contact"
-            type="button">
+        <button class="button bottom-modal__button button_save" id="save-contact" type="button">
           <span class="button__text">Сохранить</span>
         </button>
       </div>
