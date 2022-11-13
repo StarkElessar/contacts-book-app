@@ -1,6 +1,6 @@
 import { initialState } from './initialState'
 
-const reducer = (state = initialState, { type, groupProps, contactProps }) => {
+const reducer = (state = initialState, { type = 'default', groupProps, contactProps }) => {
   const actions = {
     // метод для создания контакта
     createContact: () => ({
@@ -40,7 +40,11 @@ const reducer = (state = initialState, { type, groupProps, contactProps }) => {
       ...state,
       groups: state.groups.filter((group) => group.id !== groupProps.id),
     }),
+    // дэфолтный метод по умолчнию возвращает состояние приложения
+    default: () => state,
   }
+
+  return actions[type]()
 }
 
 export { reducer }
