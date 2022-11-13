@@ -1,4 +1,12 @@
-import { contactSidebarDropdownLabel } from './elements'
+import {
+  contactSidebarDropdownLabel,
+  contactSidebar,
+  dropdownButton,
+  dropdownListContainer,
+  dropdownInput,
+  contactSidebarInputs,
+  contactInputsContainer
+} from './elements'
 
 // Данная функция записывает переданные атрибуты для переданного элемента:
 const setAttributes = (element, attributes) =>
