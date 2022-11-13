@@ -185,3 +185,9 @@ const createDropdownGroupElement = ({ id, name }) => (
     }
   })
 )
+
+export {
+  createSidebarGroupElement,
+  createContactGroupElement,
+  createDropdownGroupElement,
+}
