@@ -1,6 +1,6 @@
 .contact-list {
-  padding-top: rem(56);
-  padding-bottom: rem(56);
+  @include adaptiveClamp('padding-top', 56, 28);
+  @include adaptiveClamp('padding-bottom', 56, 28);
   &._hide {
     display: none;
   }
@@ -37,6 +37,9 @@
     padding: rem(24);
     transition: $standartTrans;
     cursor: pointer;
+    @include media(425) {
+      padding: rem(12) rem(8);
+    }
     &:hover {
       background-color: rgba(#000, 1%);
     }
@@ -48,10 +51,13 @@
   &__label {
     margin-right: auto;
     font-weight: 700;
-    font-size: 18px;
+    font-size: rem(18);
     line-height: prc(22, 18);
     color: #000;
     transition: $standartTrans;
+    @include media(425) {
+      font-size: rem(16);
+    }
   }
   // .contact-list__icon
   &__icon {
@@ -77,6 +83,9 @@
   &__content {
     padding: 0 rem(24);
     transition: $standartTrans;
+    @include media(425) {
+      padding: 0 rem(8);
+    }
   }
   // .contact-list__list
   &__list {
@@ -89,21 +98,79 @@
     padding: rem(24) 0;
     display: flex;
     align-items: center;
+    @include media(680) {
+      display: grid;
+      padding: rem(8) 0;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      @include adaptiveClamp('row-gap', 12, 6, 680, 320, 1);
+      column-gap: rem(8);
+    }
+    &._edit {
+      .contact-list__name,
+      .contact-list__phone {
+        background-color: rgba(#000, 3%);
+        color: $blueColor;
+        padding: rem(6) rem(8);
+        &._error {
+          border: rem(1) solid $redColor;
+        }
+      }
+      .contact-list__button_edit {
+        background-color: #4adb1b;
+        border-color: #4adb1b;
+        &:hover {
+          background-color: darken(#4adb1b, 5%);
+          border-color: darken(#4adb1b, 5%);
+        }
+        &:active {
+          background-color: darken(#4adb1b, 10%);
+          border-color: darnek(#4adb1b, 10%);
+        }
+        svg {
+          path {
+            fill: #fff;
+          }
+        }
+      }
+    }
   }
   // .contact-list__name
   &__name {
-    margin-right: auto;
+    flex: 1 1;
+    margin-right: rem(8);
     color: rgba(#000, 50%);
     background-color: transparent;
     font-size: rem(18);
+    border-radius: rem(6);
+    transition: $standartTrans;
+    @include media(680) {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      margin-right: 0;
+    }
+    @include media(425) {
+      font-size: rem(14);
+    }
   }
   // .contact-list__phone
   &__phone {
+    flex: 0 1 rem(190);
+    width: rem(190);
     margin-right: rem(24);
     color: #000;
     font-size: rem(18);
     background-color: transparent;
-    width: auto;
+    border-radius: rem(6);
+    transition: $standartTrans;
+    @include media(680) {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      margin-right: 0;
+    }
+    @include media(425) {
+      font-size: rem(14);
+    }
   }
   // .contact-list__button
   &__button {
@@ -111,12 +178,23 @@
     height: rem(38);
     border-radius: rem(6);
     border: rem(1) solid rgba(#000, 10%);
-    margin-right: rem(8);
+    @include notLast {
+      margin-right: rem(8);
+    }
     background-color: transparent;
     transition: $standartTrans;
     display: flex;
     justify-content: center;
     align-items: center;
+    @include media(680) {
+      @include notLast {
+        margin-right: 0;
+      }
+    }
+    @include media(425) {
+      width: rem(30);
+      height: rem(30);
+    }
     svg {
       path {
         transition: $standartTrans;
@@ -125,6 +203,12 @@
     }
     // .contact-list__button_edit
     &_edit {
+      @include media(680) {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
       &:hover {
         border-color: $blueColor;
         background-color: $blueColor;
@@ -137,6 +221,12 @@
     }
     // .contact-list__button_remove
     &_remove {
+      @include media(680) {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+      }
       &:hover {
         border-color: $orangeColor;
         background-color: $orangeColor;

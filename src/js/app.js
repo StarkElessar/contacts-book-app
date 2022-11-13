@@ -1,27 +1,40 @@
-import { contactGroupsAccordion } from './helpers/contactGroupsAccordion'
-import { dropdownGroup } from './helpers/dropdownGroup'
-import { renderContactsGroup } from './helpers/renderContactsGroup'
-import { toggleModal } from './helpers/toggleModal'
+import maskedInput from './modules/maskedInput'
+import { headerFixed } from './modules/headerFixed'
+import { createStore } from './store'
+import { addListeners } from './store/addListeners'
 
-const app = () => {
-  const descriptionLabel = document.querySelector('.description-label')
-  const contactList = document.querySelector('.contact-list')
-  const contactsGroupList = JSON.parse(localStorage.getItem('groupList')) || new Array()
+import {
+  headerAddContactButton,
+  headerGroupsButton,
+  dropdownButton,
+  saveContactButton,
+  addNewGroupButton,
+  saveGroupsButton,
+} from './helpers/elements'
 
-  if (!localStorage.getItem('groupList')) {
-    contactList.classList.add('_hide')
-    if (descriptionLabel.classList.contains('_hide')) {
-      descriptionLabel.classList.remove('_hide')
-    }
-  } else { 
-    contactList.classList.remove('_hide')
-    descriptionLabel.classList.add('_hide')
-  }
+import {
+  handleHeaderAddContactButtonClick,
+  handleHeaderGroupsButtonClick,
+  handleCloseSidebar,
+  handleDropdownClick,
+  handleSaveContactButtonClick,
+  handleAddNewGroupButtonClick,
+  handleSaveGroupsButton,
+} from './helpers/eventHandlers'
 
-  toggleModal()
-  renderContactsGroup(contactsGroupList)
-  contactGroupsAccordion()
-  dropdownGroup()
-}
+const store = createStore()
+addListeners(store) // в два главных события передаём текущее состояние, для первого рендера
 
-app()
+headerFixed()
+maskedInput()
+
+// связываю клик по кнопке с событием вызываемым при клике
+headerAddContactButton.onclick = handleHeaderAddContactButtonClick
+headerGroupsButton.onclick = handleHeaderGroupsButtonClick(store)
+document.onclick = handleCloseSidebar
+
+dropdownButton.onclick = handleDropdownClick
+saveContactButton.onclick = handleSaveContactButtonClick(store)
+
+addNewGroupButton.onclick = handleAddNewGroupButtonClick
+saveGroupsButton.onclick = handleSaveGroupsButton(store)
