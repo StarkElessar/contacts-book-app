@@ -1,3 +1,5 @@
+import { reducer } from './reducer'
+
 const createStore = () => {
   const listeners = []
   let state
@@ -9,8 +11,16 @@ const createStore = () => {
 
   const dispatch = (action) => {
     state = reducer(state, action)
-    executeAll()
+    executeAll(listeners)
   }
+
+  const subscribe = (...listenersToSubscribe) => {
+    listeners.push(...listenersToSubscribe)
+    executeAll(listeners)
+  }
+
+  // вызов диспатча для начальной отрисовки элементов
+  dispatch({})
 
   return {}
 }
