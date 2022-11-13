@@ -169,3 +169,19 @@ const createContactGroupElement = ({ group, contacts, dispatch }) => {
   
   return groupElement
 }
+// Функция для создания выпадающего списка групп ДЛЯ контактов в сайдбаре:
+const createDropdownGroupElement = ({ id, name }) => (
+  createElement({
+    type: 'li',
+    attributes: { class: 'select-list__item' },
+    children: [name],
+    onclick: () => {
+      contactSidebarDropdownLabel.innerText = name
+      dropdownInput.value = name
+      dropdownInput.dataset.id = id
+      dropdownButton.focus()
+
+      dropdownListContainer.classList.remove('_show')
+    }
+  })
+)
