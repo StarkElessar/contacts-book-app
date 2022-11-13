@@ -23,12 +23,19 @@ const createStore = () => {
   dispatch({})
 
   return {
+    // геттер для получения всего стейта, всех контактов и групп
     get contactsBook() { return state },
+    // геттер для получения списка контактов
     get contacts() { return state.contacts },
+    // геттер для получения групп
     get groups() { return state.groups },
+    // геттер для получения массива id`шек всех групп
     get groupIds() { return state.groups.map((group) => group.id) },
+    // функция для получения контактов по определенной группе id 
     getContactsByGroupId,
+    // функция диспатч для получения актуального стейста и перерисовки элементов
     dispatch,
+    // подписка на события и на последующее их выполнение
     subscribe,
   }
 }
