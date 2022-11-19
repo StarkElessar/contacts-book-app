@@ -66,7 +66,7 @@ const handleSaveContactButtonClick = (store) => () => {
   }
 
   const [name, phoneNumber] = inputValues
-  const groupId = Number(dropdownInput.dataset.id)
+  const groupId = dropdownInput.dataset.id
   const contactId = Number(contactInputsContainer.dataset.id)
   const type = contactId ? 'updateContact' : 'createContact'
 
@@ -94,7 +94,7 @@ const handleSaveGroupsButton = (store) => () => {
     return
   }
   // массив групп созданный из значений дата-атрибутов каждого инпута
-  const groupsToSave = inputs.map(({ dataset: { id, name, isOpened } }) => ({ id: Number(id), name, isOpened }))
+  const groupsToSave = inputs.map(({ dataset: { id, name, isOpened } }) => ({ id, name, isOpened }))
   // массив id-групп
   const groupIdsToSave = groupsToSave.map((group) => group.id)
   // массив групп с экшенами, чтобы вызвать нужные методы и после перерисовать все группы контактов

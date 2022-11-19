@@ -1,4 +1,5 @@
 import { initialState } from './initialState'
+import { v4 as uuidv4 } from 'uuid'
 
 const reducer = (state = initialState, { type = 'default', groupProps, contactProps }) => {
   const actions = {
@@ -24,7 +25,7 @@ const reducer = (state = initialState, { type = 'default', groupProps, contactPr
     // метод для создания группы
     createGroup: () => ({
       ...state,
-      groups: state.groups.concat([{ ...groupProps, id: Date.now() }]),
+      groups: state.groups.concat([{ ...groupProps, id: uuidv4() }]),
     }),
     // метод для обновление группы
     updateGroup: () => ({
