@@ -69,7 +69,7 @@ const createSidebarGroupElement = ({ id = '', name = '', isOpened = false, } = {
 }
 // Функция для создания контакт-компонента с вложенными детьми:
 const createContactElement = (contact, dispatch) => {
-  const { id, name, groupName, phoneNumber } = contact
+  const { id, name, groupName, groupId, phoneNumber } = contact
 
   // кнопка для редактирования контакта
   const editButton = createElement({
@@ -91,7 +91,7 @@ const createContactElement = (contact, dispatch) => {
       // В инпуты сайдара записываются данные данного контакта, чтобы можно было их изменить
       contactSidebarInputs.forEach((input) => (input.value = contact[input.name]))
       contactSidebarDropdownLabel.innerText = groupName
-      dropdownInput.dataset.id = id
+      dropdownInput.dataset.id = groupId
 
       contactSidebar.classList.add('_show')
     },
