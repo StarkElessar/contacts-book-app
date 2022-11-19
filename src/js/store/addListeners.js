@@ -15,6 +15,7 @@ const addListeners = (store) => {
   
     contactsContainer.replaceChildren(...updatedContacts)
     emptyContactsContainer.classList.toggle('_hide', updatedContacts.length)
+    localStorage.setItem('contactsBook', (JSON.stringify(store.contactsBook)))
   }
 
   // Событие обновления групп в выпадающем списке "dropdown"
