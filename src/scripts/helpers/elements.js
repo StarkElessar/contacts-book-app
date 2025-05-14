@@ -4,7 +4,6 @@ export const contactsContainer = document.querySelector('.contact-list__containe
 export const contactSidebar = document.getElementById('addContactSidebar');
 export const contactInputsContainer = document.querySelector('.new-contact__container');
 export const contactSidebarInputs = contactSidebar.querySelectorAll('input');
-export const contactSidebarGroupsDropdownContainer = document.querySelector('.custom-dropdown');
 export const dropdownButton = document.getElementById('button-dropdown');
 export const contactSidebarDropdownLabel = contactSidebar.querySelector('.custom-dropdown__label');
 export const dropdownListContainer = document.getElementById('dropdown-list');

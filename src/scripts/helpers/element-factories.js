@@ -28,7 +28,6 @@ const createElement = ({ type, attributes, children = [], ...props }) => {
 
 // Функция для создания сайдбар-компонента с вложенными детьми:
 export const createSidebarGroupElement = ({ id = '', name = '', isOpened = false } = {}) => {
-	// поле для вводна названия группы контактов
 	const input = createElement({
 		type: 'input',
 		attributes: {
@@ -44,7 +43,6 @@ export const createSidebarGroupElement = ({ id = '', name = '', isOpened = false
 		oninput: ({ target }) => target.setAttribute('data-name', target.value)
 	});
 
-	// кнопка для удаления поля:
 	const removeButton = createElement({
 		type: 'button',
 		attributes: {
@@ -59,20 +57,16 @@ export const createSidebarGroupElement = ({ id = '', name = '', isOpened = false
 		onclick: ({ currentTarget }) => currentTarget.parentElement.remove()
 	});
 
-	// группа элементов из инпута и кнопки удалить
-	const contactGroupElement = createElement({
+	return createElement({
 		type: 'li',
 		attributes: { class: 'contacts-group__item' },
 		children: [input, removeButton]
 	});
-
-	return contactGroupElement;
 };
-// Функция для создания контакт-компонента с вложенными детьми:
+
 const createContactElement = (contact, dispatch) => {
 	const { id, name, groupName, groupId, phoneNumber } = contact;
 
-	// кнопка для редактирования контакта
 	const editButton = createElement({
 		type: 'button',
 		attributes: {
@@ -84,7 +78,6 @@ const createContactElement = (contact, dispatch) => {
 		      <path d="M0 15.25V19H3.75L14.81 7.94L11.06 4.19L0 15.25ZM17.71 5.04C18.1 4.65 18.1 4.02 17.71 3.63L15.37 1.29C14.98 0.899998 14.35 0.899998 13.96 1.29L12.13 3.12L15.88 6.87L17.71 5.04Z" fill="white"/>
 		    </svg>
 		`,
-		// на созданный контакт сразу вешаю событие клика
 		onclick: () => {
 			// При клике на кнопку в дата-атрибут контейнера инпутов в сайдбаре
 			// записывается id контакта, который я хочу редактировать
@@ -97,7 +90,7 @@ const createContactElement = (contact, dispatch) => {
 			contactSidebar.classList.add('_show');
 		}
 	});
-	// создание кнопки для удаления контакта:
+
 	const removeButton = createElement({
 		type: 'button',
 		attributes: {
@@ -109,8 +102,6 @@ const createContactElement = (contact, dispatch) => {
 				<path d="M1.66664 17.3889C1.66664 18.55 2.61664 19.5 3.77775 19.5H12.2222C13.3833 19.5 14.3333 18.55 14.3333 17.3889V4.72222H1.66664V17.3889ZM4.26331 9.87333L5.75164 8.385L7.99997 10.6228L10.2378 8.385L11.7261 9.87333L9.48831 12.1111L11.7261 14.3489L10.2378 15.8372L7.99997 13.5994L5.7622 15.8372L4.27386 14.3489L6.51164 12.1111L4.26331 9.87333ZM11.6944 1.55556L10.6389 0.5H5.36108L4.30553 1.55556H0.611084V3.66667H15.3889V1.55556H11.6944Z" fill="white"/>
 			</svg>
 		`,
-		// Вешаем обработчик клика, и диспатчим событие удаления контакта, передавая в него id
-		// по которому был клик
 		onclick: () => dispatch({ type: 'removeContact', contactProps: { id } })
 	});
 
@@ -126,9 +117,8 @@ const createContactElement = (contact, dispatch) => {
 	});
 };
 
-// Функция для создания группы контактов в аккордеоне:
+// Создания группы контактов в аккордеоне:
 export const createContactGroupElement = ({ group, contacts, dispatch }) => {
-	// Заголовок аккордеона (группы контактов)
 	const groupHeaderElement = createElement({
 		type: 'div',
 		attributes: { class: `contact-list__header ${group.isOpened ? '_show' : ''}` },
@@ -140,8 +130,7 @@ export const createContactGroupElement = ({ group, contacts, dispatch }) => {
 				</svg>
 			</span>
 		`,
-		// Вешаем обработчик клика на шапку аккордеона и диспатчим событие обновления группы, чтобы отрисовать контакты
-		// другими словами, чтобы раскрыть аккордеон
+
 		onclick: () => (
 			dispatch({
 				type: 'updateGroup',
@@ -177,7 +166,6 @@ export const createContactGroupElement = ({ group, contacts, dispatch }) => {
 	return groupElement;
 };
 
-// Функция для создания выпадающего списка групп ДЛЯ контактов в сайдбаре:
 export const createDropdownGroupElement = ({ id, name }) => (
 	createElement({
 		type: 'li',

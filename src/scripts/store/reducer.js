@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { initialState } from './initial-state.js';
+import { initialState } from './initial-state';
 
 export const reducer = (state = initialState, { type = 'default', groupProps, contactProps }) => {
 	const actions = {
@@ -38,5 +38,5 @@ export const reducer = (state = initialState, { type = 'default', groupProps, co
 		default: () => state
 	};
 
-	return actions[type]();
+	return actions[type]?.();
 };
