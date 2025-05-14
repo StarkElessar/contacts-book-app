@@ -1,0 +1,17 @@
+export const headerAddContactButton = document.getElementById('addContactButton');
+export const headerGroupsButton = document.getElementById('addGroupButton');
+export const contactsContainer = document.querySelector('.contact-list__container');
+export const contactSidebar = document.getElementById('addContactSidebar');
+export const contactInputsContainer = document.querySelector('.new-contact__container');
+export const contactSidebarInputs = contactSidebar.querySelectorAll('input');
+export const contactSidebarGroupsDropdownContainer = document.querySelector('.custom-dropdown');
+export const dropdownButton = document.getElementById('button-dropdown');
+export const contactSidebarDropdownLabel = contactSidebar.querySelector('.custom-dropdown__label');
+export const dropdownListContainer = document.getElementById('dropdown-list');
+export const dropdownInput = document.getElementById('dropdown-input');
+export const saveContactButton = document.getElementById('saveContact');
+export const groupsSidebar = document.getElementById('addGroupSidebar');
+export const groupsSidebarGroupsContainer = document.querySelector('.contacts-group__list');
+export const addNewGroupButton = document.querySelector('.button_add');
+export const saveGroupsButton = document.getElementById('saveGroup');
+export const emptyContactsContainer = document.querySelector('.description-label');
