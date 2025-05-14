@@ -1,0 +1,41 @@
+@use "vars" as *;
+@use "functions" as *;
+
+body {
+	.lock {
+		overflow: hidden;
+	}
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow: hidden;
+	background-color: #f6f7f9;
+}
+
+.page {
+	position: relative;
+	flex: 1 1 auto;
+
+	[data-observ] {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: rem(2);
+		background: transparent;
+		pointer-events: none;
+	}
+
+	&_start {
+		padding-top: var(--header-height);
+	}
+}
+
+[class*="__container"] {
+	max-width: calc(var(--container-width) + var(--main-offset) * 2);
+	margin-inline: auto;
+	padding-inline: var(--main-offset);
+}

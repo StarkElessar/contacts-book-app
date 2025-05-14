@@ -1,0 +1,76 @@
+@use "../config/vars" as *;
+@use "../config/functions" as *;
+@use "../config/mixins" as *;
+
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+
+	box-shadow: var(--default-shadow);
+	background-color: var(--white-color);
+	transition: var(--default-transition);
+
+	&._sticky {
+		position: fixed;
+		background-color: rgba(#fff, 60%);
+		backdrop-filter: blur(rem(2));
+
+		.header__container {
+			height: calc(var(--header-height) - 20px);
+		}
+
+		.logo__text {
+			display: none;
+		}
+	}
+
+	// .header__container
+	&__container {
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+	}
+
+	// .header__logo
+	&__logo {
+		margin-right: auto;
+	}
+}
+
+// Logo
+.logo {
+	display: flex;
+	align-items: center;
+
+	@include media(768) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	// .logo__icon
+	&__icon {
+		margin-right: rem(16);
+
+		@include media(768) {
+			padding-left: rem(1);
+			margin-right: 0;
+		}
+	}
+
+	// .logo__text
+	&__text {
+		font-weight: 800;
+		font-size: rem(18);
+		line-height: prc(22, 18);
+		color: var(--first-accent-color);
+
+		@include media(768) {
+			max-width: rem(80);
+			font-size: rem(14);
+			line-height: prc(22, 24);
+		}
+	}
+}
