@@ -1,0 +1,18 @@
+#addGroupSidebar.modal(data-group='')
+	.modal__body
+		.modal__header.header-modal
+			.header-modal__container
+				h3.header-modal__title Группы контактов
+				button.header-modal__button-close
+					svg(width='14' height='14' viewbox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg')
+						path(d='M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z'
+							fill='black')
+		.modal__content.contacts-group
+			.contacts-group__container
+				ul.contacts-group__list
+		.modal__bottom.bottom-modal
+			.bottom-modal__container
+				button.button.bottom-modal__button.button_add(type='button')
+					span.button__text Добавить
+				button#saveGroup.button.bottom-modal__button.button_save(type='button')
+					span.button__text Сохранить
